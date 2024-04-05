@@ -1,4 +1,5 @@
 Playwright Tests for CommitQuality
+
 This repository contains automated tests for the website CommitQuality.com using Playwright, written in TypeScript.
 
 Overview
