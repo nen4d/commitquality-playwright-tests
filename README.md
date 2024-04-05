@@ -6,5 +6,7 @@ Overview
 These tests cover the following pages of the CommitQuality website:
 
 Login Page: Verifies the functionality of the login feature.
+
 Products Page: Tests various aspects of the products page.
+
 My Account Page: Validates user account-related functionalities.
