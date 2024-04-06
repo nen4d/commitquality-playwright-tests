@@ -1,20 +1,11 @@
 import { expect, type Locator, type Page } from '@playwright/test';
+import Collection from '@lariat/playwright';
 
-export class LoginPage {
+export class LoginPage extends Collection<Page> {
 
-    readonly page: Page;
-    readonly usernameField: Locator;
-    readonly passwordField: Locator;
-    readonly loginButton: Locator;
-
-    constructor(page: Page) {
-
-        this.page = page;
-        this.usernameField = page.locator('[data-testid="username-textbox"]');
-        this.passwordField = page.locator('[data-testid="password-textbox"]');
-        this.loginButton = page.locator('[data-testid="login-button"]');
-
-    }
+    readonly usernameField = this.getByTestId('username-textbox');
+    readonly passwordField = this.getByTestId('password-textbox');
+    readonly loginButton = this.getByTestId('login-button');
 
     async goToLoginPage() {
         await this.page.goto('/login');

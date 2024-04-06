@@ -2,28 +2,26 @@ import { test, expect} from '@playwright/test';
 import { LoginPage } from '../pages/login.ts';
 import { Products } from '../pages/products.ts';
 
+
 test('Show more button', async ({ page }) => {
 
     const Product = new Products(page);
     await Product.goToProductsPage();
 
-    if(await Product.showMoreButton.isVisible()) {
+    const isButtonVisible = await Product.showMoreButton.isVisible()
+    test.skip(!isButtonVisible , 'There is no "Show more" button');
 
-        // Counting all current products showed on the page
-        const numberOfProducts = await Product.productsList.count();
+    // Counting all current products showed on the page
+    const numberOfProducts = await Product.productsList.count();
 
-        // Loading more products
-        await Product.showMoreButton.click();
+    // Loading more products
+    await Product.showMoreButton.click();
 
-        // Counting products after loading more
-        const newNumberOfProducts = await Product.productsList.count();
+    // Counting products after loading more
+    const newNumberOfProducts = await Product.productsList.count();
 
-        // Assertion
-        expect(newNumberOfProducts).toBeGreaterThan(numberOfProducts);
-
-    }   else {
-        console.log('There is no "Show more" button');
-    }
+    // Assertion
+    expect(newNumberOfProducts).toBeGreaterThan(numberOfProducts);
 
 })
 
